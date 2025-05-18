@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>AppCherry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: #f5f8fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 420px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);
+            padding: 32px 28px;
+        }
+        h1, h2 {
+            color: #25A9D1;
+            margin-bottom: 10px;
+        }
+        .info {
+            background: #e8f4fa;
+            color: #134f5c;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            font-size: 1.05em;
+        }
+        label {
+            display: block;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1.5px solid #b5d6e6;
+            font-size: 1em;
+            margin-bottom: 8px;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #25A9D1;
+            outline: none;
+        }
+        button {
+            background: #25A9D1;
+            color: #fff;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #1d7ea6;
+        }
+        .success, .warning {
+            margin-top: 14px;
+            padding: 10px 14px;
+            border-radius: 7px;
+            font-size: 1em;
+        }
+        .success {
+            background: #d4f7e2;
+            color: #1a7f3c;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="info">
+        Bienvenido a App Cherry, Espero te guste :)
+    </div>
+    <h1>AppCherry</h1>
+    <h2>Welcome To AppCherry</h2>
+    <p>AppCherry es una plataforma web, dónde los vendedores y compradores puedes elegir como una opción elegíble.</p>
+    <p>Con esta plataforma tendrás mucha comodidad a la hora de buscar o vender productots.</p>
+    <p>Cabe aclarar que esta página fue hecho por @WikiDev, talvez no sea alguien conocido.</p>
+    <p>Esta página es una beta v1.0, así que es posible la precencia de algún error.</p>
+    <p>Si tiene algúna duda o simplemente quieres dar algún error ocurrido puedes contactarme, por @WikiDeveloper@gmail.com</p>
+    <h2>¡Agradezco! su paciencia, Estaré al tanto del proyeyecto lo mejor pósible por su comodidad.</h2>
+
+    <form id="opinionForm">
+        <label for="opinion">¿Qué Opinás Del Proyecto?</label>
+        <input type="text" id="opinion" name="opinion" placeholder="Escribe tu opinión aquí...">
+        <button type="submit">Envíar Opinión</button>
+    </form>
+
+    <div id="registroSection">
+        <h2>Registrarse</h2>
+        <p>Tendrás que registrarte para procceder!</p>
+        <p>Si no te registras no podrás usar la app.</p>
+        <p>Solo tendrás que poner un nombre, una contraseña (crea una), y un correo electrónico.</p>
+        <form id="registroForm">
+            <label for="usuario">Nombre de usuario</label>
+            <input type="text" id="usuario" name="usuario" required>
+            <label for="correo">Correo electrónico</label>
+            <input type="email" id="correo" name="correo" required>
+            <label for="contrasena">Contraseña</label>
+            <input type="password" id="contrasena" name="contrasena" required>
+            <button type="submit">Registrarme a AppCherry</button>
+        </form>
+        <div id="registroMsg"></div>
+    </div>
+
+    <div id="mainSection" class="hidden">
+        <h2>¡Bienvenido a la interfaz principal!</h2>
+        <p>Aquí puedes poner la interfaz y funciones para usuarios registrados.</p>
+        <!-- Aquí agregas el resto de tu app para usuarios registrados -->
+    </div>
+</div>
+<script>
+    // Opinión
+    document.getElementById('opinionForm').onsubmit = function(e) {
+        e.preventDefault();
+        alert("¡Gracias por tu opinión!");
+        document.getElementById('opinion').value = "";
+    };
+
+    // Registro
+    document.getElementById('registroForm').onsubmit = function(e) {
+        e.preventDefault();
+        var usuario = document.getElementById('usuario').value.trim();
+        var correo = document.getElementById('correo').value.trim();
+        var contrasena = document.getElementById('contrasena').value.trim();
+        var msg = document.getElementById('registroMsg');
+        if(usuario && correo && contrasena) {
+            msg.innerHTML = '<div class="success">¡Registro exitoso!</div>';
+            setTimeout(function() {
+                document.getElementById('registroSection').classList.add('hidden');
+                document.getElementById('mainSection').classList.remove('hidden');
+            }, 1200);
+        } else {
+            msg.innerHTML = '<div class="warning">Por favor, completa todos los campos.</div>';
+        }
+    };
+</script>
+</body>
+</html>
